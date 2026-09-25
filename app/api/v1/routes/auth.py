@@ -16,8 +16,10 @@ async def signup(payload: UserCreate) -> UserInDB:
     try:
         return auth_service.register_user(payload)
     except auth_service.UserAlreadyExists:
-        raise HTTPException(status_code=409, detail="Username already taken")
-
+        raise HTTPException(
+            status_code=409,
+            detail="Username already taken",
+        )
 
 @router.post("/login", response_model=Token)
 async def login_json(payload: UserIn) -> Token:

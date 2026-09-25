@@ -18,7 +18,7 @@ def get_user(username: str) -> UserInDB | None:
 
 def register_user(payload: UserCreate) -> UserInDB:
     if payload.username in users_db:
-        raise Exception("User already exists")
+        raise UserAlreadyExists
     user = UserInDB(
         **payload.model_dump(exclude={"password"}),
         hashed_password=hash_password(payload.password),
