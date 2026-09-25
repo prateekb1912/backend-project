@@ -7,6 +7,9 @@ class Settings(BaseSettings):
     name: str = "FastAPI Backend"
     version: str = "0.1.0"
     debug: bool = False
+    secret_key: str = "secretkey"
+    algorithm: str = "HS256"
+    access_token_expire_minutes: int = 60
 
     model_config = SettingsConfigDict(
         env_file=".env",
