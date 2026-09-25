@@ -1,11 +1,14 @@
 from app.core.security import DUMMY_HASH, hash_password, verify_password
 from app.models.user import UserInDB
-from app.schemas import UserCreate
+from app.schemas.user import UserCreate
 
 users_db: dict[str, dict] = {}
 
 
 class UserAlreadyExists(Exception): ...
+
+
+class UserNotExists(Exception): ...
 
 
 def get_user(username: str) -> UserInDB | None:
