@@ -21,3 +21,14 @@ class Settings(BaseSettings):
 @lru_cache
 def get_settings() -> Settings:
     return Settings()
+
+
+PUBLIC_PATHS = frozenset(
+    {
+        "/docs",
+        "/v1/health",
+        "/v1/auth/signup",
+        "/v1/auth/login",
+        "/v1/auth/token",
+    }
+)
