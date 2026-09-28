@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 from app.api.router import api_router
 from app.core.config import get_settings
-from app.core.middleware import require_auth
+from app.core.middleware import rate_limiter, require_auth
 
 
 def create_app() -> FastAPI:
@@ -13,6 +13,7 @@ def create_app() -> FastAPI:
         debug=settings.debug,
     )
     application.middleware("http")(require_auth)
+    application.middleware("http")(rate_limiter)
     application.include_router(api_router)
     return application
 
