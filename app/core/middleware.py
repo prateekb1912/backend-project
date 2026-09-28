@@ -33,7 +33,6 @@ async def rate_limiter(
 
     hits.append(now)
     _hits[key] = hits
-    print(_hits)
     return await call_next(request)
 
 

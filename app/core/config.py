@@ -10,6 +10,8 @@ class Settings(BaseSettings):
     secret_key: str = "secretkey"
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 60
+    rate_limit_window_seconds: int = 60
+    rate_limit_max_requests: int = 10
 
     model_config = SettingsConfigDict(
         env_file=".env",
